@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <%= pageTitle %>
+                        </h1>
+                        <p>Her kan du redigere, deaktivere, slette og se alle redaktører.</p>
+                        <p>Bemærk at når en redaktør slettes, kan denne ikke længere logge ind på adminpanelet. Hvis en redaktør stadig skal kunne tilgå adminpanelet, brug istedet knappen deaktiver. Redaktøren vil nu være inaktiv - for at aktivere igen - vælg "Redaktør - Aktiver" i menuen til venstre.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Overblik</h2>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col"></th>
+                                        <th scope="col">Navn</th>
+                                        <th scope="col">Tilpas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% redaktoerer.forEach(function(redaktoer) { %>
+                                    <tr>
+                                        <td>
+                                            <img style="width: 40px;" src="/images/bruger_profilbillede/<%=redaktoer.billede%>" alt="<%=redaktoer.navn%>">
+                                        </td>
+                                        <td>
+                                            <%=redaktoer.navn%>
+                                        </td>
+                                        <td>
+                                            <a class="produkt-table-link" href="/admin/redaktion_ret/<%= redaktoer.id %>"
+                                                alt="ret redaktion" title="Ret redaktør">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="produkt-table-link" href="/admin/redaktion_arkiver/<%= redaktoer.id %>"
+                                                alt="deaktiver redaktion" title="Deaktiver redaktør">
+                                                <i class="fas fa-archive"></i>
+                                            </a>
+                                            <a class="produkt-table-link" href="/admin/redaktion_slet/<%= redaktoer.id %>"
+                                                alt="slet redaktør" title="Slet redaktør" onclick="return confirmAction('Er du sikker på du vil slette <%=redaktoer.navn%>? Redaktøren vil blive slettet i databasen og vil ikke længere være tilgængelig.')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../../partials/template/scripts.ejs %>
+
+    <script src='/javascripts/confirmAction.js'></script>
+    <script src='/javascripts/collapseAdminSidebar.js'></script>
+</body>
+
+</html>

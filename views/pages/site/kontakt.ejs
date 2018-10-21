@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/template/header_admin.ejs %>
+
+    <div class="container" id="top-container">
+        <% include ../../partials/template/header.ejs %>
+        <% include ../../partials/template/mainNav.ejs %>
+    </div>
+
+    <div class="container" id="main-container">
+        <div class="row">
+
+            <div class="col-md-9" id="main-column">
+                <p><a href="/" class="breadCrumbLink">Forside</a> /
+                    <%= pageTitle %>
+                </p>
+                <h1>kontakt magasinet</h1>
+                <div class="col-md-12 main-content">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h2><i class="fas fa-map-marker-alt"></i> Adresse</h2>
+                            <p>
+                                <%= kontakt.vejnavn %>
+                                <%= kontakt.husnummer %>
+                                </br>
+                                <%= kontakt.postnummer %>
+                                <%= kontakt.bynavn %>
+                                </br>
+                                <%= kontakt.land %>
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h2>Kontaktoplysninger</h2>
+                            <p>
+                                <i class="fas fa-phone"></i> Telefon:
+                                <%= kontakt.telefon %>
+                                </br>
+                                <i class="fas fa-fax"></i> Fax:
+                                <%= kontakt.fax %>
+                                </br>
+                                <i class="fas fa-envelope"></i> E-mail:
+                                <%= kontakt.email %>
+                            </p>
+                            </br>
+                            </br>
+                        </div>
+
+                        <div class="col-md-12">
+                            <h2>Kontaktformular</h2>
+
+                            <form id="kontaktForm" method="post" action="/kontakt" onSubmit="return formularValidering(this);">
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="navn">Dit navn:</label>
+                                        <input class="form-control input-lg" type="text" name="navn" value="<%= navn %>">
+                                        <small id="navnHelp" class="form-text text-muted attention"></small>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="email">Din e-mailadresse:</label>
+                                        <input class="form-control input-lg" type="text" name="email" value="<%= email %>">
+                                        <small id="emailHelp" class="form-text text-muted attention"></small>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="emne">Emne</label>
+                                        <input class="form-control input-lg" type="emnet" name="emne" value="<%= emne %>"></input>
+                                        <small id="emneHelp" class="form-text text-muted attention"></small>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <label for="besked">Din besked</label>
+                                        <textarea class="form-control input-lg" name="besked"><%= besked %></textarea>
+                                        <small id="beskedHelp" class="form-text text-muted attention"></small>
+                                    </div>
+                                    <div class="form-group col-md-12">
+                                        <button id="submitKnap" class="btn btn-default" type="submit" name="sendKnap" value="Send">Send besked</button>
+                                    </div>
+                                </div>
+                            </form>
+                            <!-- Kontakt formular -->
+                        </div>
+                    </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', () => {
+                            // Der er ingen fejl i nedstående funktion - det er blot ejs som har svært ved at tyde parametret
+                            if (<%= validerMedDetSamme %>) {
+                            var form = document.querySelector('#kontaktForm');
+                            formularValidering(form);
+                        }
+                        });
+                    </script>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="aside-column">
+                <div class="col-md-12" id="aside-content">
+                    <% include ../../partials/content/artikel_find.ejs %>
+                    <% include ../../partials/content/artikel_mestLaeste.ejs %>
+                    <% include ../../partials/content/sponsor_reklame.ejs %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" id="bottom-container">
+        <% include ../../partials/template/footer.ejs %>
+    </div>
+
+</body>
+<% include ../../partials/template/scripts.ejs %>
+<script src="/javascripts/kontakt_validering.js"></script>
+
+</html>

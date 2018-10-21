@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/template/header_admin.ejs %>
+
+    <div class="container" id="top-container">
+        <% include ../../partials/template/header.ejs %>
+        <% include ../../partials/template/mainNav.ejs %>
+    </div>
+
+    <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-md-9" id="main-column">
+                <p><a href="/" class="breadCrumbLink">Forside</a> /
+                    <%= pageTitle %>
+                </p>
+                <h1>
+                    <%= pageTitle %>
+                </h1>
+                <div class="col-md-12 main-content">
+
+                    <div class="row">
+                        <p>
+                            Din søgning på
+                            <strong>
+                                <%= artikler_findMessage %>
+                            </strong>
+                            retunerede
+                            <strong>
+                                <%= artikler_antalMessage %>
+                            </strong>
+                            artikler
+                        </p>
+                        </br>
+                        <% artikler.forEach(function(artikel) { %>
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-body">
+
+                                    <h2 class="card-title">
+                                        <%= artikel.titel %>
+                                    </h2>
+                                    <p>
+                                        <strong>
+                                            <%= artikel.dato %>
+                                            <i class="fas fa-comments"></i>
+                                            <%= kommentarAntal %> <i class="fas fa-eye"></i>
+                                            <%= artikel.visningsantal %> visninger
+                                        </strong>
+                                    </p>
+                                    <% if (artikel.tekst.length > 200) { %>
+                                    <p class="card-text">
+                                        <%- artikel.tekst.slice(0, 200) %> ...
+                                    </p>
+                                    <% } else { %>
+                                    <p class="card-text">
+                                        <%- artikel.tekst %>
+                                    </p>
+                                    <% } %>
+                                    <p class="text-uppercase">
+                                        <i class="fas fa-tag"></i>
+                                        <%= artikel.kategori %>
+                                    </p>
+                                    </br>
+                                    <a href="/artikel/id=<%= artikel.id %>" class="defaultLink">læs mere</a>
+                                </div>
+                            </div>
+                        </div>
+                        <% }); %>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="aside-column">
+                <div class="col-md-12" id="aside-content">
+                    <% include ../../partials/content/artikel_find.ejs %>
+                    <% include ../../partials/content/artikel_mestLaeste.ejs %>
+                    <% include ../../partials/content/sponsor_reklame.ejs %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="container" id="bottom-container">
+        <% include ../../partials/template/footer.ejs %>
+    </div>
+
+</body>
+<% include ../../partials/template/scripts.ejs %>
+
+</html>

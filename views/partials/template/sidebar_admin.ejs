@@ -1,0 +1,128 @@
+<!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+<nav id="sidebar">
+    <div class="sidebar-header">
+        <h3>
+            <span class="nav-profile-img">
+                <img src="/images/admin-logo.png" alt="image" style="height: 20px;">
+            </span> Adminpanel</h3>
+        <strong>
+            <span class="nav-profile-img">
+                <img src="/images/admin-logo.png" alt="image" style="height: 20px;">
+            </span>
+        </strong>
+    </div>
+
+    <ul class="list-unstyled components">
+        <li>
+            <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-home"></i>
+                Admin
+            </a>
+            <ul class="collapse list-unstyled" id="homeSubmenu">
+                <li>
+                    <a href="/admin">Forside</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#kontaktSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-paper-plane"></i>
+                Kontakt
+            </a>
+            <ul class="collapse list-unstyled" id="kontaktSubmenu">
+                <li>
+                    <a href="/admin/kontaktoplysning_ret/1">Kontaktoplysninger - Rediger</a>
+                </li>
+                <li>
+                    <a href="/admin/kontaktbesked_oversigt">Kontaktbeskeder - Oversigt</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#redaktionSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-user"></i>
+                Redaktører
+            </a>
+            <ul class="collapse list-unstyled" id="redaktionSubmenu">
+                <li>
+                    <a href="/admin/redaktion_oversigt">Redaktør - Oversigt</a>
+                </li>
+                <li>
+                    <a href="/admin/redaktion_aktiver">Redaktør - Aktiver</a>
+                </li>
+                <li>
+                    <a href="/admin/redaktion_opret">Redaktør - Opret</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#artikelSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-newspaper"></i>
+                Artikler
+            </a>
+            <ul class="collapse list-unstyled" id="artikelSubmenu">
+                <li>
+                    <a href="/admin/artikel_oversigt">Artikel - Oversigt</a>
+                </li>
+                <li>
+                    <a href="/admin/artikel_opret">Artikel - Opret</a>
+
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#kategoriSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-tags"></i>
+                Kategorier
+            </a>
+            <ul class="collapse list-unstyled" id="kategoriSubmenu">
+                <li>
+                    <a href="/admin/kategori_sortering" title="ER IKKE FUNKTIONEL">Kategori - Rediger rækkefølge</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#kommentarSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-comments"></i>
+                Kommentarer
+            </a>
+            <ul class="collapse list-unstyled" id="kommentarSubmenu">
+                <li>
+                    <a href="/admin/kommentar_oversigt">Kommentar - Oversigt</a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" title="ER IKKE LAVET" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-address-card"></i>
+                Sponsorer
+            </a>
+            <ul class="collapse list-unstyled" id="sponsorSubmenu">
+                <li>
+                    <a href="#">Sponsor - Oversigt</a>
+                </li>
+                <li>
+                    <a href="#">Sponsor - Opret</a>
+                </li>
+            </ul>
+        </li>
+        <!-- <li>
+            <a href="#sideSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                <i class="fas fa-copy"></i>
+                Side
+            </a>
+            <ul class="collapse list-unstyled" id="sideSubmenu">
+                <li>
+                    <a href="/admin/side_oversigt">Side - Oversigt</a>
+
+                </li>
+            </ul>
+        </li> -->
+        <li>
+            <a href="/logout">
+                <i class="fas fa-sign-out-alt"></i>
+                Log ud
+            </a>
+        </li>
+    </ul>
+</nav>

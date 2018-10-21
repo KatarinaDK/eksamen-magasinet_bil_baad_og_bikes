@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan se alle sider og gå videre til redigering.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Overblik</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <table class="table table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col"></th>
+                                                <th scope="col">Navn</th>
+                                                <th scope="col">Tilpas</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% sider.forEach(function(side) { %>
+                                                <tr>
+                                                    <th scope="row">
+                                                        <img class="img-responsive" src="/images/side/<%=side.url %>" alt="<%= side.navn %>"
+                                                            style="height:20px">
+                                                    </th>
+                                                    <td>
+                                                        <%=side.navn%>
+                                                    </td>
+                                                    <td>
+                                                        <a class="side-table-link" href="/admin/side_ret/<%= side.id %>" alt="ret side" title="Ret side">
+                                                            <i class="fas fa-edit"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                <% }); %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+</body>
+
+</html>

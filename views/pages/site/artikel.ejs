@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/template/header_admin.ejs %>
+
+    <div class="container" id="top-container">
+        <% include ../../partials/template/header.ejs %>
+        <% include ../../partials/template/mainNav.ejs %>
+    </div>
+
+    <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-md-9" id="main-column">
+                <p>
+                    <a href="/" class="breadCrumbLink">Forside</a> /
+                    <a href="/artikler/kategori=<%= artikel.kategoriId %>" class="breadCrumbLink">
+                        <%= artikel.kategori %></a> / Vis artikel
+                </p>
+                <h1>
+                    <%= artikel.titel %>
+                </h1>
+                <div class="col-md-12 main-content">
+                    <p>
+                        <strong>
+                            <i class="fas fa-clock"></i>
+                            <%= artikel.dato %>
+                            <i class="fas fa-comments"></i>
+                            <%= kommentarAntal %>
+                            <i class="fas fa-eye"></i>
+                            <%= visningsAntal %> visninger
+                        </strong>
+                    </p>
+                    <p class="card-text">
+                        <%- artikel.tekst %>
+                    </p>
+
+                    <div class="row">
+                        <div class="col-md-2">
+                            <img class="img-fluid" src="/images/bruger_profilbillede/<%= artikel.redaktoerbillede %>"
+                                alt="<%= artikel.redaktoernavn %>">
+                        </div>
+                        <div class="col-md-10">
+                            <h4>af
+                                <%= artikel.redaktoernavn %> <small>Redaktør</small></h4>
+                            <p>
+                                <%= artikel.redaktoertekst %>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                </br>
+                <h1>kommentarer</h1>
+                <div class="col-md-12 main-content">
+                    <% kommentarer.forEach(function(kommentar) { %>
+                    <div class="row kommentar-row">
+                        <div class="col-md-1">
+                            <i class="fas fa-comment fa-2x"></i>
+                        </div>
+                        <div class="col-md-11">
+
+                            <h4>
+                                <%= kommentar.navn %>
+                            </h4>
+                            <p>
+                                <strong>
+                                    <i class="fas fa-clock"></i>
+                                    <%= kommentar.dato %>
+                                </strong>
+                                </br>
+                                <%- kommentar.besked %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) %>
+                    </br>
+                    </br>
+
+                    <h2>Din kommentar</h2>
+                    <div class="col-md-12">
+                        <form id="kommentarForm" method="post" action="/kommentar/<%= artikel_id %>" onSubmit="return formularValidering(this);">
+                            <div class="row">
+                                <div class="form-group col-md-6">
+                                    <label for="navn"><strong>Dit navn</strong></label>
+                                    <input class="form-control input-lg" type="text" name="navn" value="<%= navn %>">
+                                    <small id="navnHelp" class="form-text text-muted attention"></small>
+                                </div>
+                                <div class="form-group col-md-6">
+                                    <label for="email"><strong>Din e-maiadresse</strong></label>
+                                    <input class="form-control input-lg" type="text" name="email" value="<%= email %>">
+                                    <small id="emailHelp" class="form-text text-muted attention"></small>
+                                </div>
+                                <div class="form-group col-md-12">
+                                    <label for="besked"><strong>Besked</strong></label>
+                                    <textarea class="form-control input-lg" name="besked"><%= besked %></textarea>
+                                    <small id="beskedHelp" class="form-text text-muted attention"></small>
+                                </div>
+                                <button id="submitKnap" class="btn btn-default" type="submit" name="sendKnap" value="Send">udfør</button>
+                            </div>
+                        </form>
+                        <!-- Kontakt formular -->
+                        <script>
+                            document.addEventListener('DOMContentLoaded', () => {
+                                // Der er ingen fejl i nedstående funktion - det er blot ejs som har svært ved at tyde parametret
+                                if (<%= validerMedDetSamme %>) {
+                                var form = document.querySelector('#kommentarForm');
+                                formularValidering(form);
+                            }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-3" id="aside-column">
+                <div class="col-md-12" id="aside-content">
+                    <% include ../../partials/content/artikel_find.ejs %>
+                    <% include ../../partials/content/artikel_mestLaeste.ejs %>
+                    <% include ../../partials/content/sponsor_reklame.ejs %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="bottom-container">
+        <% include ../../partials/template/footer.ejs %>
+    </div>
+
+</body>
+<% include ../../partials/template/scripts.ejs %>
+<script src="/javascripts/kommentar_validering.js"></script>
+
+</html>

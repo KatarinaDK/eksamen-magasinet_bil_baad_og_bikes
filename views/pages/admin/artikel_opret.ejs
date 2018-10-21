@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <%= pageTitle %>
+                        </h1>
+                        <p>Her kan du oprette en artikel.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Opret artikel</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form id="opretArtikelForm" method="post" action="/admin/artikel_opret">
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="inputTitelnavn">Titel</label>
+                                            <input required type="text" class="form-control" id="inputTitelnavn" name="titel"
+                                                value="">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputKategorinavn">Kategori</label>
+                                            <select required class="form-control" id="inputKategorinavn" name="kategorinavn">
+                                                <option value="">Vælg kategori</option>
+                                                <% kategorier.forEach(function(kategori) { %>
+                                                <option value="<%= kategori.id %>">
+                                                    <%= kategori.navn %>
+                                                </option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputRedaktoernavn">Redaktør</label>
+                                            <select class="form-control" id="inputRedaktoernavn" name="redaktoernavn">
+                                                <option value="">Vælg Redaktør</option>
+                                                <% redaktoerer.forEach(function(redaktoer) { %>
+                                                <option value="<%= redaktoer.id %>">
+                                                    <%= redaktoer.navn %>
+                                                </option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="editor">Tekst</label>
+                                            <textarea required id="editor" name="tekst"> </textarea>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-12">
+                                        <button id="opretKnap" class="btn btn-default" type="submit" name="opretKnap"
+                                            value="Opret">Opret</button>
+
+                                        <p id="formMessage">
+                                            <%= message %>
+                                        </p>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../../partials/template/scripts.ejs %>
+
+    <!-- Confirm delete -->
+    <script src='/javascripts/confirmAction.js'></script>
+    <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+    <script>
+        let editor;
+
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+
+                toolbar: [ 'Heading', 'Link', 'bold', 'bulletedList', 'numberedList', 'blockQuote' ]
+            })
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let opretForm = document.querySelector('#opretArtikelForm');
+            console.log(opretForm);
+
+            opretForm.addEventListener('submit', (event) => {
+
+                let textArea = opretForm.tekst.value;
+                // console.log(textArea);
+
+                if (textArea == '<p>&nbsp;</p>') {
+                    event.preventDefault();
+
+                    message = 'Husk at udfylde feltet';
+
+
+                    console.log('TEKSTFELT TOMT');
+                } else {
+                    opretForm.submit();
+                    console.log('TEKSTFELT IKKE TOMT');
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>

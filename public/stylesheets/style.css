@@ -1,0 +1,309 @@
+/* ------------------------------------------------------------------------------------------------------
+DEFAULT STYLING
+------------------------------------------------------------------------------------------------------ */
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 14px;
+  color: #353537;
+  background-color: #F0F0F0;
+}
+
+/* ---------------------------------------------------
+TYPOGRAPHY
+----------------------------------------------------- */
+
+h1 {
+  font-size: 36px;
+}
+
+h2 {
+  font-size: 24px;
+}
+
+h3 {
+  font-size: 18px;
+}
+
+h4 {
+  font-size: 16px;
+}
+
+h1, #mestLaeste h3, #sponsorReklame h3 {
+  font-weight: 700;
+  font-family: 'Oswald', sans-serif;
+  text-transform: uppercase;
+}
+
+#footer p {
+  line-height: 2;
+}
+
+/* ---------------------------------------------------
+LINKS OG BUTTONS
+----------------------------------------------------- */
+
+.btn-default {
+  height: 43px;
+  width: 110px;
+  color: #777777;
+  background-color: #E6E6E6;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  border-radius: 0;
+  margin-right: 15px;
+}
+.btn-default:hover {
+  color: #FFFFFF;
+  background-color: #FFC000;
+}
+
+#btnBasicSearch {
+  width: 80px;
+  margin-left: 20px;
+  margin-right: 0;
+}
+
+#btn-billedupload {
+  width: auto;
+}
+
+.defaultLink {
+  color: #777777;
+  background-color: #E6E6E6;
+  font-size: 16px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 10px 30px;
+}
+.defaultLink:hover{
+  color: #777777;
+  text-decoration: none;
+}
+
+.mestLaesteLink {
+  color: #777777;
+  text-decoration: none;
+}
+.mestLaesteLink:hover {
+  color: #777777;
+  text-decoration: none;
+}
+
+
+/* ---------------------------------------------------
+    FORMS
+----------------------------------------------------- */
+.form-control {
+  font-size: 14px;
+  line-height: 2;
+  border-radius: 0;
+}
+
+/* ---------------------------------------------------
+    HEADER ADMIN
+----------------------------------------------------- */
+#admin-nav{
+  background-color: #353537;
+  color: #FFFFFF;
+  height: 28px;
+  margin-bottom: 0;
+}
+#admin-nav a {
+  color: #FFFFFF  !important;
+}
+
+/* ---------------------------------------------------
+HEADER
+----------------------------------------------------- */
+#header {
+  height: 160px;
+}
+
+/* ---------------------------------------------------
+MAIN NAVIGATIONS MENU
+----------------------------------------------------- */
+#main-nav {
+  height: 54px;
+  border-bottom: 4px solid #FFC000;
+  background-color: #353537;
+  padding: 0;
+}
+
+.navbar-toggler {
+  color: #FFFFFF;
+}
+
+#collapsibleNavId, #navbar-ul, .navbar-li {
+  height: 50px;
+}
+
+#navbar-ul li a {
+
+  background-color: #353537;
+}
+#navbar-ul li a {
+  display: block;
+  height: 50px;
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+#navbar-ul li a:hover, #navbar-ul li a.active {
+ background-color: #FFC000;
+}
+
+#navbar-ul li a .fa-home {
+  margin-right: 5px;
+}
+
+/* ---------------------------------------------------
+MAIN OG ASIDE
+----------------------------------------------------- */
+#top-container, #main-container, #bottom-container {
+  max-width: 1170px;
+}
+
+#top-container, #main-container {
+  background-color: #FFFFFF;
+}
+
+#top-container {
+  margin-top: 20px;
+}
+
+#main-container {
+  padding-top: 20px;
+}
+
+#main-column {
+  padding-bottom: 40px;
+}
+
+.main-content {
+  border-top: 4px solid #000000;
+  padding-top: 15px;
+}
+
+#aside-content {
+  padding: 20px 30px;
+  background-color: #F0F0F0;
+}
+
+/* ---------------------------------------------------
+    CONTENT - MEST LÆSTE
+----------------------------------------------------- */
+#mestLaeste h3, #sponsorReklame h3{
+  border-bottom: 4px solid #000000;
+}
+
+
+/* ---------------------------------------------------
+    CONTENT - SPONSOR REKLAMER
+----------------------------------------------------- */
+#sponsorReklame .col-md-12{
+  margin: 10px;
+}
+
+#sponsorLink, .breadCrumbLink {
+  color: #353537;
+  text-decoration: none;
+}
+#sponsorLink:hover, .breadCrumbLink:hover {
+  color: #801C1C;
+}
+
+/* ---------------------------------------------------
+    FOOTER
+----------------------------------------------------- */
+#footer{
+  color: #FFFFFF;
+  background-color: #353537;
+  padding-top: 25px;
+}
+
+/* ---------------------------------------------------
+    ARTIKEL GENERELT
+----------------------------------------------------- */
+.card {
+  border: none;
+}
+
+.card-body {
+  padding: 20px 0;
+}
+
+.card strong {
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------
+    KOMMENTARER
+----------------------------------------------------- */
+.kommentar-row {
+  padding-top: 15px;
+  border-bottom: 1px solid #E6E6E6;
+}
+
+/* ---------------------------------------------------
+    KOMMENTAR FORMULAR
+----------------------------------------------------- */
+#kommentarForm .col-md-6, #kommentarForm .col-md-12 {
+  padding-left: 0;
+}
+
+/* ---------------------------------------------------
+    ARTIKEL_ARKIVETSIDE
+----------------------------------------------------- */
+.pagingLink {
+  margin-top: 20px;
+  width: 45px;
+}
+
+/* ---------------------------------------------------
+  REDAKTOER SIDE
+----------------------------------------------------- */
+.redaktoer-row {
+  margin-bottom: 20px;
+}
+ /* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) and (max-width: 991.98px) { 
+  #main-column {
+    flex: 0 0 67%;
+  }
+  
+  #aside-column {
+    flex: 0 0 33%;
+    max-width: 37%;
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1199.98px) { 
+  
+  #main-column {
+    flex: 0 0 67%;
+  }
+  
+  #aside-column {
+    flex: 0 0 33%;
+    max-width: 37%;
+  } 
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+  #main-column {
+    flex: 0 0 67%;
+  }
+  
+  #aside-column {
+    flex: 0 0 33%;
+    max-width: 37%;
+  } 
+}

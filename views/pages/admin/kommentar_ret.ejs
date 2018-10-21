@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <%= pageTitle %>
+                        </h1>
+                        <p>Her kan du rette en kommentar.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Ret kommentar</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form id="retKommentarForm" method="post" action="/admin/kommentar_ret/<%= kommentar.id %>">
+                                <div class="row">
+                                
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="editor">Besked</label>
+                                            <textarea required id="editor" name="besked"> <%= kommentar.besked %> </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <button id="retKnap" class="btn btn-default"
+                                            type="submit" name="retKnap" value="ret" onclick="return confirmAction('Er du sikker på du vil rette kommentaren fra <%= kommentar.navn %>?')">Ret</button>
+
+                                        <p id="formMessage">
+                                            <%= message %>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../../partials/template/scripts.ejs %>
+
+    <!-- Confirm delete -->
+    <script src='/javascripts/confirmAction.js'></script>
+    <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+    <script>
+        let editor;
+
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+
+                toolbar: [ 'Heading', 'Link', 'bold', 'bulletedList', 'numberedList', 'blockQuote' ]
+            })
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+</body>
+
+</html>

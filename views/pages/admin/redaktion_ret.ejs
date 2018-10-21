@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+    <script src="https://cdn.ckeditor.com/ckeditor5/11.0.1/classic/ckeditor.js"></script>
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <%= pageTitle %>
+                        </h1>
+                        <p>Her kan du rette en redaktør.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Ret redaktør</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form id="retRedatoerForm" method="post" action="/admin/redaktion_ret/<%= redaktoer.id %>">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputRedaktoernavn">Navn</label>
+                                            <input required type="text" class="form-control" id="inputRedaktoernavn"
+                                                name="navn" value="<%= redaktoer.navn %>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="inputRedaktoermail">Mail</label>
+                                            <input required type="email" class="form-control" id="inputRedaktoermail"
+                                                name="mail" value="<%= redaktoer.mail %>">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="editor">Profiltekst</label>
+                                            <textarea required id="editor" name="tekst">
+                                                        <%= redaktoer.tekst %>
+                                                    </textarea>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <button id="retKnap" class="btn btn-default" type="submit" name="retKnap" value="ret"
+                                            onclick="return confirmAction('Er du sikker på du vil rette <%= redaktoer.navn %>?')">Ret</button>
+
+                                        <p id="formMessage">
+                                            <%= message %>
+                                        </p>
+
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Ret profilbillede</h2>
+                        </div>
+                        <div class="panel-body">
+                            <form action="/admin/redaktion_ret_billede/<%= redaktoer.id %>" method="post" enctype="multipart/form-data">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="inputModelnavn">Billede <small>(gemmes i mappen: bruger_profilbillede)</small></label>
+                                            <input required id="upload__image" class="form-control" type="file" name="images">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input class="btn btn-default" id="btn-billedupload" type="submit" value="Upload Billede">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../../partials/template/scripts.ejs %>
+
+    <!-- Confirm delete -->
+    <script src='/javascripts/confirmAction.js'></script>
+    <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+    <script>
+        let editor;
+
+        ClassicEditor
+            .create(document.querySelector('#editor'), {
+
+                toolbar: [ 'Heading', 'Link', 'bold', 'bulletedList', 'numberedList', 'blockQuote' ]
+            })
+            .then(newEditor => {
+                editor = newEditor;
+            })
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+
+</body>
+
+</html>

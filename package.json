@@ -1,0 +1,32 @@
+{
+  "name": "svenedeproeve_magasinet_bil_baad_og_bikes",
+  "version": "1.0.0",
+  "description": "Katarinas eksamens opgave",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "dependencies": {
+    "@ckeditor/ckeditor5-build-classic": "^11.0.1",
+    "bcrypt": "^2.0.1",
+    "body-parser": "^1.18.3",
+    "ejs": "^2.5.9",
+    "express": "^4.16.4",
+    "express-session": "^1.15.6",
+    "formidable": "^1.2.1",
+    "morgan": "^1.9.1",
+    "mysql2": "^1.6.1",
+    "nodemon": "^1.17.5",
+    "sharp": "^0.21.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatarinaDK/svenedeproeve_magasinet_bil_baad_og_bikes.git"
+  },
+  "author": "Katarina Petersen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KatarinaDK/svenedeproeve_magasinet_bil_baad_og_bikes/issues"
+  },
+  "homepage": "https://github.com/KatarinaDK/svenedeproeve_magasinet_bil_baad_og_bikes#readme"
+}

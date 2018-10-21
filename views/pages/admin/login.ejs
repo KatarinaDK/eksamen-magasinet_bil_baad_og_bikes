@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Login css -->
+        <link rel='stylesheet' href='/stylesheets/login.css' />
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="panel panel-login">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <form id="login-form" action="/login" method="post" style="display: block;">
+                                    <h1>LOG IND</h1>
+                                    <div class="form-group">
+                                        <label for="brugernavn">Brugernavn</label>
+                                        <input required type="text" name="brugernavn" id="brugernavn" tabindex="1" class="form-control" placeholder="Brugernavn">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Password</label>
+                                        <input required type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                    </div>
+                                    <div class="col-xs-6 form-group pull-right">
+                                        <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log Ind">
+                                    </div>
+                                    <div class="form-group">
+                                        <p>
+                                            <%= message %>
+                                        </p>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="forsideLink" class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-right">
+                <strong><a href="/">GÅ TIL FORSIDE</a></strong>
+            </div>
+        </div>
+    </div>
+    
+    <% include ../../partials/template/scripts.ejs %>
+
+    <!-- Login -->
+    <script src="/javascripts/login.js"></script>
+
+</body>
+
+</html>

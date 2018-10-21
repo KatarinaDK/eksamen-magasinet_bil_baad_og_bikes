@@ -1,0 +1,20 @@
+<!-- Navigation -->
+
+<% if (pageTitle == 'Vis artikel' || pageTitle == 'Arkivet' || pageTitle == 'Find i arkivet' || pageTitle == 'Biler' || pageTitle == 'Både' || pageTitle == `Bike's` || pageTitle == 'Forside' || pageTitle == 'Kontakt' || pageTitle == 'Redaktionen' || pageTitle == 'Sponsor') { %>
+    <nav id="admin-nav" class="navbar navbar-expand-lg sticky-top"> <!-- style="display:none" tilføjes senere. Bygges på sammen med js for at styre synligheden, afhængig af om man er logget på eller ej-->
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link" href="/admin">Gå til Adminpanel</a>
+            </li>
+        </ul>
+    </nav> 
+<% } %>
+<% if (pageTitle == 'Artikeloprettelse' || pageTitle == 'Artikeloversigt' || pageTitle == 'Artikelredigering' || pageTitle == 'Adminpanel' || pageTitle == 'Kommentaroversigt' || pageTitle == 'Kommentarredigering' || pageTitle == 'Kontaktbeskedsoversigt' || pageTitle == 'Kontaktredigering' || pageTitle == 'Redaktøraktivering' || pageTitle == 'Redaktøroprettelse' || pageTitle == 'Redaktøroversigt' || pageTitle == 'Redaktørredigering' || pageTitle == 'Kategorisortering') { %>
+    <nav id="admin-nav" class="navbar navbar-expand-lg sticky-top">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                    <a class="nav-link" href="/">Gå til Forside</a>
+            </li>
+        </ul>
+    </nav>
+<% } %>

@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>
+                            <%= pageTitle %>
+                        </h1>
+                        <p>Her kan du se, slette og redigere i alle kommentarer.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Overblik</h2>
+                        </div>
+                        <div class="panel-body">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Navn</th>
+                                        <th scope="col">Artikel</th>
+                                        <th scope="col">Besked</th>
+                                        <th scope="col">Tilpas</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <% kommentarer.forEach(function(kommentar) { %>
+                                    <tr>
+                                        <td>
+                                            <%= kommentar.navn %>
+                                        </td>
+                                        </td>
+                                        <td>
+                                            <%= kommentar.artikel %>
+                                        </td>
+                                        <td>
+                                            <%- kommentar.besked %>
+                                        </td>
+
+                                        <td>
+                                            <a class="produkt-table-link" href="/admin/kommentar_ret/<%= kommentar.id %>"
+                                                alt="ret kommentar" title="Ret kommentar">
+                                                <i class="fas fa-edit"></i>
+                                            </a>
+                                            <a class="produkt-table-link" href="/admin/kommentar_slet/<%= kommentar.id %>"
+                                                alt="slet kommentar" title="Slet kommentar" onclick="return confirmAction('Er du sikker på du vil slette kommentaren? Kommentaren vil blive slettet i databasen og vil ikke længere være tilgængeligt.')">
+                                                <i class="fas fa-trash-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    <% }); %>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <% include ../../partials/template/scripts.ejs %>
+
+    <script src='/javascripts/confirmAction.js'></script>
+    <script src='/javascripts/collapseAdminSidebar.js'></script>
+</body>
+
+</html>

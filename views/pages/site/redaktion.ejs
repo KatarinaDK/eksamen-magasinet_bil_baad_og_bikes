@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+</head>
+
+<body>
+
+    <% include ../../partials/template/header_admin.ejs %>
+
+    <div class="container" id="top-container">
+        <% include ../../partials/template/header.ejs %>
+        <% include ../../partials/template/mainNav.ejs %>
+    </div>
+
+    <div class="container" id="main-container">
+        <div class="row">
+            <div class="col-md-9" id="main-column">
+
+                <h3>
+                    <%= redaktionen_bil[0].kategori %>
+                </h3>
+                <% redaktionen_bil.forEach(function(redaktoer) { %>
+                <div class="row redaktoer-row">
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="/images/bruger_profilbillede/<%= redaktoer.billede %>" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <h4>
+                            <%= redaktoer.navn %>
+                        </h4>
+                        <p><i class="fas fa-envelope"></i>
+                            <%= redaktoer.email %>
+                        </p>
+                        <p>
+                            <%- redaktoer.tekst %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+                <h3>
+                    <%= redaktionen_baad[0].kategori %>
+                </h3>
+                <% redaktionen_baad.forEach(function(redaktoer) { %>
+                <div class="row redaktoer-row">
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="/images/bruger_profilbillede/<%= redaktoer.billede %>" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <h4>
+                            <%= redaktoer.navn %>
+                        </h4>
+                        <p><i class="fas fa-envelope"></i>
+                            <%= redaktoer.email %>
+                        </p>
+                        <p>
+                            <%- redaktoer.tekst %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+                <h3>
+                    <%= redaktionen_bike[0].kategori %>
+                </h3>
+                <% redaktionen_bike.forEach(function(redaktoer) { %>
+                <div class="row redaktoer-row">
+                    <div class="col-md-3">
+                        <img class="img-fluid" src="/images/bruger_profilbillede/<%= redaktoer.billede %>" alt="">
+                    </div>
+                    <div class="col-md-9">
+                        <h4>
+                            <%= redaktoer.navn %>
+                        </h4>
+                        <p><i class="fas fa-envelope"></i>
+                            <%= redaktoer.email %>
+                        </p>
+                        <p>
+                            <%- redaktoer.tekst %>
+                        </p>
+                    </div>
+                </div>
+                <% }) %>
+
+            </div>
+
+            <div class="col-md-3" id="aside-column">
+                <div class="col-md-12" id="aside-content">
+                    <% include ../../partials/content/artikel_find.ejs %>
+                    <% include ../../partials/content/artikel_mestLaeste.ejs %>
+                    <% include ../../partials/content/sponsor_reklame.ejs %>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="bottom-container">
+        <% include ../../partials/template/footer.ejs %>
+    </div>
+
+</body>
+<% include ../../partials/template/scripts.ejs %>
+<script src="/javascripts/kommentar_validering.js"></script>
+
+</html>

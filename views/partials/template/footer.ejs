@@ -1,0 +1,43 @@
+<!-- Footer -->
+<div class="row" id="footer">
+    <div class="col-md-4">
+        <h3>Adresse</h3>
+        <p><strong></strong>
+            <%= kontakt.firmanavn %>
+            </strong>
+            </br>
+            <%= kontakt.vejnavn %>
+            <%= kontakt.husnummer %>
+            </br>
+            <%= kontakt.postnummer %>
+            <%= kontakt.bynavn %>
+            </br>
+            <%= kontakt.land %>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>Kontakt</h3>
+        <p>
+            Telefon:
+            <%= kontakt.telefon %>
+            </br>
+            Fax:
+            <%= kontakt.fax %>
+            </br>
+            E-mail:
+            <%= kontakt.email %>
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h3>Nyhedsbrev</h3>
+        <form id="nyhedsbrev" class="form" method="post" onSubmit="return formular(this);">
+            <div class="form-group">
+                <input class="form-control" type="email" name="nyhedsbrevEmail" placeholder="E-mail adresse" required>
+            </div>
+            <div class="form-group">
+                <button href="#" class="btn btn-default" id="btnNyhedsbrevTilmeld" type="submit">tilmeld</button>
+                <button href="#" class="btn btn-default" id="btnNyhedsbrevAfmeld" type="submit">frameld</button>
+            </div>
+        </form>
+    </div>
+</div>

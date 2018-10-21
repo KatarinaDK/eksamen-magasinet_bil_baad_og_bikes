@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+        <!-- Admin css -->
+        <link rel='stylesheet' href='/stylesheets/admin.css' />
+        <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+        <div class="wrapper">
+            <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+            <% include ../../partials/template/sidebar_admin.ejs %>
+
+                <!-- Page Content  -->
+                <div id="content">
+                    <div class="container-fluid">
+
+                        <button type="button" id="sidebarCollapse" class="btn btn-info">
+                            <i class="fas fa-align-left"></i>
+                            <span> Sidebar</span>
+                        </button>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h1>
+                                    <%= pageTitle %>
+                                </h1>
+                                <p>Her kan du rette kontaktoplysningerne.</p>
+                            </div>
+                            <div class="panel panel-default col-md-12">
+                                <div class="panel-heading">
+                                    <h2 class="panel-title">Ret kontaktoplysninger</h2>
+                                </div>
+                                <div class="panel-body">
+                                    <form id="retKontaktForm" method="post" action="/admin/kontakt_ret/<%= kontakt.id %>">
+                                        <div class="row">
+
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label for="firmanavn">Firmanavn</label>
+                                                    <input required type="text" class="form-control" id="firmanavn" name="firmanavn" value="<%= kontakt.firmanavn %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label for="vejnavn">Vejnavn</label>
+                                                    <input required type="text" class="form-control" id="vejnavn" name="vejnavn" value="<%= kontakt.vejnavn %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="husnummer">Husnummer</label>
+                                                    <input required type="number" class="form-control" id="husnummer" name="husnummer" value="<%= kontakt.husnummer %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-9">
+                                                <div class="form-group">
+                                                    <label for="bynavn">Bynavn</label>
+                                                    <input required type="text" class="form-control" id="bynavn" name="bynavn" value="<%= kontakt.bynavn %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-3">
+                                                <div class="form-group">
+                                                    <label for="postnummer">Postnummer</label>
+                                                    <input required type="number" class="form-control" id="postnummer" name="postnummer" value="<%= kontakt.postnummer %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="telefon">Telefon</label>
+                                                    <input required type="number" class="form-control" id="telefon" name="telefon" value="<%= kontakt.telefon %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="fax">Fax</label>
+                                                    <input required type="number" class="form-control" id="fax" name="fax" value="<%= kontakt.fax %>">
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="email">Email</label>
+                                                    <input required type="email" class="form-control" id="email" name="email" value="<%= kontakt.email %>">
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12">
+                                                <button href="/admin/kontakt_ret/<%= kontakt.id %>" id="retKnap" class="btn btn-default" type="submit" name="retKnap" value="ret"
+                                                    onclick="return confirmAction('Er du sikker på du vil rette oplysningerne?')">Ret</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+            <!-- Confirm delete -->
+            <script src='/javascripts/confirmAction.js'></script>
+            <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+</body>
+
+</html>

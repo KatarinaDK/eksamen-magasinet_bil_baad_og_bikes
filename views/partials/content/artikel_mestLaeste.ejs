@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-md-12" id="mestLaeste">
+        <h3>mest læste</h3>
+        <ul>
+            <% artikler_mestLaeste.forEach(function(artikel) { %>
+            <li>
+                <a class="mestLaesteLink" href="/artikel/id=<%= artikel.id %>"> <%=artikel.titel %>
+                </a>
+
+            </li>
+            <% }) %>
+        </ul>
+    </div>
+</div>

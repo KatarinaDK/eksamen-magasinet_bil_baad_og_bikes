@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="da">
+
+<head>
+    <% include ../../partials/template/head.ejs %>
+    <!-- Admin css -->
+    <link rel='stylesheet' href='/stylesheets/admin.css' />
+    <!-- <link rel="stylesheet" href="style4.css"> -->
+</head>
+
+<body>
+    <% include ../../partials/template/header_admin.ejs %>
+    <div class="wrapper">
+        <!-- Sidebar hentet og tilpasset. https://bootstrapious.com/p/bootstrap-sidebar -->
+        <% include ../../partials/template/sidebar_admin.ejs %>
+
+        <!-- Page Content  -->
+        <div id="content">
+            <div class="container-fluid">
+
+                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                    <i class="fas fa-align-left"></i>
+                    <span> Sidebar</span>
+                </button>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <h1>Velkommen til Adminpanelet!</h1>
+                        <p>Her kan du redigere, deaktivere, slette og oprette produkter og sider.</p>
+                    </div>
+                    <div class="panel panel-default col-md-12">
+                        <div class="panel-heading">
+                            <h2 class="panel-title">Overblik</h2>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <i class="fas fa-address-card"></i>
+                                    <%= kontaktbeskedAntal %>
+                                    <a href="/admin/kontaktbesked_oversigt" alt="gå til kontaktbeskedsoversigt" title="Gå til kontaktbeskedsoversigt">Kontaktbeskeder</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <i class="fas fa-user"></i>
+                                    <%= redaktoerAntal %>
+                                    <a href="/admin/redaktion_oversigt" alt="gå til redaktøroversigt" title="Gå til redaktøroversigt">Redaktører</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <i class="fas fa-newspaper"></i>
+                                    <%= artikelAntal %>
+                                    <a href="/admin/artikel_oversigt" alt="gå til artikeloversigt" title="Gå til artikeloversigt">Artikler</a>
+                                </div>
+                                <div class="col-md-3">
+                                    <i class="fas fa-comments"></i>
+                                    <%= kommentarAntal %>
+                                    <a href="/admin/kommentar_oversigt" alt="gå til kommentaroversigt" title="Gå til kommentaroversigt">Kommentarer</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <% include ../../partials/template/scripts.ejs %>
+
+        <script src='/javascripts/collapseAdminSidebar.js'></script>
+
+</body>
+
+</html>
