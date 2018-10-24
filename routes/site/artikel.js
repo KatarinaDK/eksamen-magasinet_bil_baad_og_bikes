@@ -11,10 +11,10 @@ module.exports = (app) => {
     try {
 
       let artiklen = await artikel.getOne(req.params.id); // Henter artikler til indhold på artikel-siden
-      let artikelID = artiklen[ 0 ].id; // Gemmer artiklens id i en variabel til brug ved post
+      let artikelID = artiklen.id; // Gemmer artiklens id i en variabel til brug ved post
 
       // Hent nuværende antal visninger
-      let visninger = artiklen[ 0 ].visningsantal;
+      let visninger = artiklen.visningsantal;
       // console.log(visninger);
 
       // opdater antallet af visninger
@@ -37,7 +37,7 @@ module.exports = (app) => {
       let render_data = {
         siteTitle: 'BBBMag',
         pageTitle: 'Vis artikel',
-        artikel: artiklen[ 0 ],
+        artikel: artiklen,
         kommentarer: kommentarerne,
         kommentarAntal: kommentarantal,
         visningsAntal: visninger_addOne,
@@ -64,10 +64,10 @@ module.exports = (app) => {
   app.post('/kommentar/:id', async (req, res) => {
     try {
       let artiklen = await artikel.getOne(req.params.id); // Henter artikler til indhold på artikel-siden
-      let artikelID = artiklen[ 0 ].id; // Gemmer artiklens id i en variabel til brug ved post
+      let artikelID = artiklen.id; // Gemmer artiklens id i en variabel til brug ved post
 
       // Hent nuværende antal visninger
-      let visninger = artiklen[ 0 ].visningsantal;
+      let visninger = artiklen.visningsantal;
       // console.log(visninger);
 
       let kommentarerne = await kommentar.getbyArtikel(req.params.id) // Henter alle kommentarer tilhørende en bestemt artikel
@@ -105,7 +105,7 @@ module.exports = (app) => {
         let render_data = {
           siteTitle: 'BBBMag',
           pageTitle: 'Vis artikel',
-          artikel: artiklen[ 0 ],
+          artikel: artiklen,
           kommentarer: kommentarerne,
           kommentarAntal: kommentarantal,
           visningsAntal: visninger,

@@ -15,7 +15,7 @@ module.exports = (app) => {
       res.render('pages/admin/artikel_ret', {
         siteTitle: 'BBBMag',
         pageTitle: 'Artikelredigering',
-        artikel: artiklen[0], 
+        artikel: artiklen, 
         kategorier: artikelKategori,
         redaktoerer: artikelRedaktoer,
         message: ''
@@ -34,13 +34,13 @@ module.exports = (app) => {
       // undersøg om der er indtastet en nyt titel og om den findes i en anden artikel
       let originalArtikel = await artikel.getOne(req.params.id);
 
-      let originalTitel = originalArtikel[ 0 ].titel;
+      let originalTitel = originalArtikel.titel;
 
       let indtastetTitel = req.body.titel;
       
       let titelResultat = await artikel.getAll_artikelTitelAntal(indtastetTitel);
-
-      let nyTitel = titelResultat[ 0 ].antal == 0;
+      
+      let nyTitel = titelResultat.antal == 0;
       let titel = nyTitel ? indtastetTitel : originalTitel;
       
       if (nyTitel || indtastetTitel == originalTitel) {
@@ -63,7 +63,7 @@ module.exports = (app) => {
         res.render('pages/admin/artikel_ret', {
           siteTitle: 'BBBMag',
           pageTitle: 'Artikelredigering',
-          artikel: artiklen[0],
+          artikel: artiklen,
           kategorier: artikelKategori,
           redaktoerer: artikelRedaktoer,
           message: 'Titlen findes i forvejen - forsøg med en anden Titel'

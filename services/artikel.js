@@ -50,7 +50,7 @@ Artikel.getOne = (id) => {
         db.query(sql, [ id ], (err, result) => {
             if (err) reject(err)
             // console.log(err);
-            resolve(result);
+            resolve(result[0]);
         });
     });
 };
@@ -158,7 +158,7 @@ Artikel.getAll_artikelTitelAntal = (artikeltitelnavn) => {
             `;
         db.query(sql, [ artikeltitelnavn ], (err, result) => {
             if (err) reject(err)
-            resolve(result);
+            resolve(result[0]);
         });
     });
 };
